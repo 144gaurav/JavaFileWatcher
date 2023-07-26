@@ -60,17 +60,13 @@ public class WatchService {
         eventList.addAll(key.pollEvents());
         key.reset();
         eventList.forEach(event -> {
-            System.out.println(
-                    "Event kind:" + event.kind()
-                            + ". File affected: " + event.context() + ".");
-            takeNewFileEvent(key,event,config);
+                        takeNewFileEvent(key,event,config);
         });
     }
     private void takeNewFileEvent(WatchKey key,WatchEvent event, WatcherConfig config){
         Path dir = (Path) key.watchable();
         Path context = (Path) event.context();
         Path fullPath = dir.resolve(context);
-        System.out.println("config : " + config.path);
         config.eventConsumer.accept(fullPath.toString());
     }
 

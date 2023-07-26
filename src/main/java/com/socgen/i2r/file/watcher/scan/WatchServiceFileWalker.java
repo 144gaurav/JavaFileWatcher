@@ -27,7 +27,7 @@ public class WatchServiceFileWalker implements FileVisitor<Path> {
     public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
         if(folderFilter.accept(dir.toString())){
             WatcherConfig config = new WatcherConfig(fileConsumer,dir.toString(),folderFilter,fileFilter);
-            ServiceSupplier.getWatchService().register(config);
+            //ServiceSupplier.getWatchService().register(config);
             return FileVisitResult.CONTINUE;
         }else {
            return FileVisitResult.SKIP_SUBTREE;

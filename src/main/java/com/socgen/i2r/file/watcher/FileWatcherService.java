@@ -17,7 +17,7 @@ public class FileWatcherService {
         ScanService scanService = ServiceSupplier.getScanService();
         scanService.start();
         ScheduledExecutorService taskScheduler = initScheduler();
-        taskScheduler.scheduleAtFixedRate(() -> watcherExtraction.wakeUp(),1,500,TimeUnit.SECONDS);
+        taskScheduler.scheduleAtFixedRate(() -> watcherExtraction.wakeUp(),1,10,TimeUnit.SECONDS);
         }
 
         private static ScheduledExecutorService initScheduler(){
